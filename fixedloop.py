@@ -1,5 +1,6 @@
 import time
 
+
 class FixedLoop():
     interval = 0
     _last_fixed_time = 0
@@ -19,11 +20,11 @@ class FixedLoop():
         delay_time = next_time - time.time()
         self._last_fixed_time = next_time  # Update the prev time ready for the next call
         self._last_delay_time = delay_time
-        
+
         if delay_time > 0:
             time.sleep(delay_time)
             return True
-        
+
         if delay_time == 0:
             # return Immediately
             return True
@@ -34,7 +35,7 @@ class FixedLoop():
     @property
     def last_delay_time(self):
         return self._last_delay_time
-    
+
     @property
     def last_fixed_time(self):
         return self._last_fixed_time

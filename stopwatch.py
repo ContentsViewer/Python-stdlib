@@ -20,14 +20,14 @@ class Stopwatch():
         self._is_running = True
         self._checkpoint_time = self._start_time
         return
-    
+
     def stop(self):
         if not self._is_running:
             return
         self._stop_time = time.time()
         self._is_running = False
         return
-    
+
     def reset(self):
         self.stop()
         self._start_time = 0
@@ -39,12 +39,13 @@ class Stopwatch():
         self.reset()
         self.start()
         return
-    
+
     def checkpoint(self):
         current_time = self._current_time
-        self._checkpoint_time, diff_checkpoint = current_time, (current_time - self._checkpoint_time)
+        self._checkpoint_time, diff_checkpoint = current_time, (
+            current_time - self._checkpoint_time)
         return diff_checkpoint
-    
+
     @property
     def is_running(self):
         return self._is_running
@@ -52,7 +53,7 @@ class Stopwatch():
     @property
     def elapsed(self):
         return (self._current_time - self._start_time)
-    
+
     @property
     def _current_time(self):
         current_time = self._stop_time
@@ -61,7 +62,7 @@ class Stopwatch():
         return current_time
 
 
-def stopwatch(func=None, callback=None):    
+def stopwatch(func=None, callback=None):
     """
     Examples
     --------
@@ -72,11 +73,11 @@ def stopwatch(func=None, callback=None):
         @stopwatch
         def test():
             time.sleep(1)
-        
+
         @stopwatch(callback=my_callback)
         def test_with_callback():
             time.sleep(1)
-        
+
         test()
         test_with_callback()
 
@@ -93,7 +94,8 @@ def stopwatch(func=None, callback=None):
         if callback:
             callback(stopwatch, func)
         else:
-            print('Executed {0} in {1} seconds'.format(func, stopwatch.elapsed))
+            print('Executed {0} in {1} seconds'.format(
+                func, stopwatch.elapsed))
         return ret
     return wrapper
 
@@ -103,16 +105,16 @@ def stopwatch_scope(callback=None):
     """
     Examples
     --------
-    
+
         def my_callback(stopwatch, func):
             print(stopwatch.elapsed)
 
         def test():
             time.sleep(1)
-        
+
         with stopwatch_scope():
             test()
-            
+
         with stopwatch_scope(callback=my_callback):
             test()
 
