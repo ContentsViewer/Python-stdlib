@@ -40,11 +40,11 @@ class Stopwatch():
         self.start()
         return
 
-    def checkpoint(self):
+    def lap(self):
         current_time = self._current_time
-        self._checkpoint_time, diff_checkpoint = current_time, (
+        self._checkpoint_time, lap_time = current_time, (
             current_time - self._checkpoint_time)
-        return diff_checkpoint
+        return lap_time
 
     @property
     def is_running(self):
