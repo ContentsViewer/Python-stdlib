@@ -12,8 +12,15 @@ class BiMapper():
         self.y2x = {}
 
     def bind(self, x, y):
+        """
+        Raises
+        ------
+        AlreadyBoundException:
+            Raises AlreadyBoundException if x and y have been already bound.
+        """
+        
         if x in self.x2y or y in self.y2x:
-            raise AlreadyLinkedException()
+            raise AlreadyBoundException()
         
         self.x2y[x] = y
         self.y2x[y] = x

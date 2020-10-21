@@ -2,6 +2,11 @@ import time
 
 
 class FixedLoop():
+    """
+    Manage loop sync with ensuring a constant execution frequency.
+
+    """
+    
     interval = 0
     _last_fixed_time = 0
     _last_delay_time = 0
