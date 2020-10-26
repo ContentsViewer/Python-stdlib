@@ -19,6 +19,8 @@ class ThreadWorker():
         self._is_running = True
         thread = threading.Thread(target=worker, daemon=True)
         thread.start()
+        
+        return True
 
     @property
     def is_running(self):
