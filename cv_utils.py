@@ -78,25 +78,6 @@ def get_centers(contours):
     # print(centers)
     return centers
 
-# def get_arc_length(points):
-#     """Use cv2.arcLength()
-
-#     Args:
-#         points ([type]): [description]
-
-#     Returns:
-#         [type]: [description]
-#     """
-#     points = np.array(points)
-#     arcs = points[0:-1] - points[1:]
-
-#     if len(arcs.shape) != 2:
-#         arcs = np.zeros((0, 2))
-
-#     mags = np.linalg.norm(arcs, axis=1)
-#     length = np.sum(mags)
-
-#     return length
 
 class HoughBundler:
     '''Clasterize and merge each cluster of cv2.HoughLinesP() output
